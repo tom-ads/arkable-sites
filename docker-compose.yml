@@ -28,8 +28,7 @@ services:
   client-app:
     container_name: client_app
     working_dir: /application
-    build:
-      context: packages/client
+    build: ./packages/client
     ports:
       - "3000:3000"
     volumes:
