@@ -24,7 +24,7 @@ return new class extends Migration
             $table->integer('max_stay');
             $table->integer('max_guests');
             $table->integer('future_reservation_limit');
-            $table->string('status');
+            $table->string('status')->default(ListingStatus::UNLISTED);
             $table->timestamps();
         });
     }
