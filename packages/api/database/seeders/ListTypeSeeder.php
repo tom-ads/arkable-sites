@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Enums\ListType;
 use App\Models\ListingType;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
-use ListType;
 
 class ListTypeSeeder extends Seeder
 {

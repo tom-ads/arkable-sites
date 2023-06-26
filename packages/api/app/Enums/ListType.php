@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Enums;
+
 enum ListType: String
 {
     case APARTMENT = 'APARTMENTS';

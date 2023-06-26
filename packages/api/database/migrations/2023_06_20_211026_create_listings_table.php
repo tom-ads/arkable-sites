@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\ListingStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -12,9 +13,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('listings', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('listing_type_id')->constrained();
+            $table->uuid('id')->primary();
+            $table->foreignUuid('user_id');
+            $table->foreignUuid('listing_type_id');
             $table->string('title');
             $table->string('description');
             $table->bigInteger('price');
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->integer('max_stay');
             $table->integer('max_guests');
             $table->integer('future_reservation_limit');
-            $table->string('status')->default(ListingStatus::UNLISTED);
+            $table->string('status');
             $table->timestamps();
         });
     }
