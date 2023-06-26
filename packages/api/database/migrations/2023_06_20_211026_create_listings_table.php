@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignUuid('user_id');
             $table->foreignUuid('listing_type_id');
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->bigInteger('price');
             $table->time('check_in');
             $table->time('check_out');
