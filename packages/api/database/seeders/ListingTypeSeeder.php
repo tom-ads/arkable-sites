@@ -8,7 +8,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
-class ListTypeSeeder extends Seeder
+class ListingTypeSeeder extends Seeder
 {
     use WithoutModelEvents;
     
