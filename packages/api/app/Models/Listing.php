@@ -11,6 +11,16 @@ class Listing extends Model
 {
     use HasFactory, HasUuids;
 
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'check_in' => 'datetime',
+        'check_out' => 'datetime',
+    ];
+
     // Relationships
 
     public function host(): BelongsTo

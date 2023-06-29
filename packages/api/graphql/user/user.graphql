@@ -1,0 +1,15 @@
+type User {
+    id: ID!
+    forename: String!
+    surname: String!
+    email: String!
+}
+
+extend type Query {
+    "Return a list of users based"
+    users(search: String @like(key: "lastname", template: "%{}%")): [User!]!
+        @all
+
+    "Return the specified user"
+    user(id: String! @eq): User @find
+}

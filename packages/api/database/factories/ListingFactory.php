@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Enums\ListingStatus;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
