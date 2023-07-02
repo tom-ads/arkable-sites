@@ -1,5 +1,8 @@
 import type { Preview } from "@storybook/react";
 
+// Import tailwind styles as Storybook wont
+import "./../css/globals.css";
+
 const preview: Preview = {
   parameters: {
     actions: { argTypesRegex: "^on[A-Z].*" },
