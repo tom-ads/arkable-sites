@@ -6,7 +6,7 @@ type ButtonBaseProps = VariantProps<typeof buttonStyles>;
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     ButtonBaseProps {
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 const buttonStyles = cva("outline-none font-semibold transition-all", {
