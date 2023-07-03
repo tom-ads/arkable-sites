@@ -8,10 +8,10 @@
     "start": "next start",
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
     "unit:jest": "jest --watch",
     "e2e:cypress": "cypress open",
-    "e2e:cypress:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
-    "build-storybook": "storybook build"
+    "e2e:cypress:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\""
   },
   "dependencies": {
     "autoprefixer": "10.4.14",

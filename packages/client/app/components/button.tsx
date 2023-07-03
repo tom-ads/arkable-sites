@@ -5,7 +5,9 @@ type ButtonBaseProps = VariantProps<typeof buttonStyles>;
 
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonBaseProps {}
+    ButtonBaseProps {
+  disabled: boolean;
+}
 
 const buttonStyles = cva("outline-none font-semibold transition-all", {
   variants: {
@@ -20,18 +22,69 @@ const buttonStyles = cva("outline-none font-semibold transition-all", {
         "hover:bg-grey-600",
         "active:bg-grey-800 active:shadow-grey-200",
       ],
-      outlined: ["border border-grey-950"],
+      outlined: [
+        "border border-grey-950",
+        "hover:border-grey-800 hover:text-grey-800",
+        "active:border-grey-950 active:text-grey-950 active:shadow-grey-200",
+      ],
     },
     size: {
-      small: ["text-xs py-[0.375rem] px-5 active:shadow-sm rounded-2xl"],
+      small: ["text-xs py-2 px-5 active:shadow-sm rounded-2xl"],
       medium: ["text-sm py-2 px-6 min-h-[36px] active:shadow-md rounded-3xl"],
       large: ["text-base py-[0.625rem] px-8 active:shadow-lg rounded-3xl"],
     },
-    danger: {},
+    danger: {
+      true: "text-white",
+    },
+    disabled: {
+      true: "pointer-events-none cursor-not-allowed select-none",
+    },
   },
+  compoundVariants: [
+    // Danger
+    {
+      intent: "primary",
+      danger: true,
+      className: [
+        "bg-red-900 shadow-red-200",
+        "hover:bg-red-800",
+        "active:bg-red-900 active:shadow-red-200",
+      ],
+    },
+    {
+      intent: "outlined",
+      danger: true,
+      className: [
+        "border-red-900 text-red-900",
+        "hover:border-red-800 hover:text-red-800",
+        "active:border-red-900 active:shadow-red-200 active:text-red-900",
+      ],
+    },
+    // Disabled
+    {
+      intent: ["primary", "secondary"],
+      disabled: true,
+      className: [
+        "bg-grey-300 text-white",
+        "hover:bg-grey-300",
+        "active:bg-grey-300",
+      ],
+    },
+    {
+      intent: "outlined",
+      disabled: true,
+      className: [
+        "border-grey-300 text-grey-300",
+        "hover:border-grey-300",
+        "active:border-grey-300",
+      ],
+    },
+  ],
   defaultVariants: {
     intent: "primary",
     size: "medium",
+    danger: false,
+    disabled: false,
   },
 });
 
@@ -39,6 +92,8 @@ export default function Button({
   className,
   size,
   intent,
+  danger,
+  disabled,
   children,
   ...props
 }: ButtonProps): JSX.Element {
@@ -46,7 +101,11 @@ export default function Button({
     <button
       {...props}
       type="button"
-      className={twMerge(buttonStyles({ size, intent }), className)}
+      disabled={disabled}
+      className={twMerge(
+        buttonStyles({ size, intent, danger, disabled }),
+        className
+      )}
     >
       {children}
     </button>
