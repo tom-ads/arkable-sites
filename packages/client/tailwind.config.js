@@ -1,12 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 
-const colors = require("tailwindcss/colors");
+const defaultTheme = require("tailwindcss/defaultTheme");
 
 module.exports = {
   content: ["./app/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
+    boxShadow: {
+      sm: "0px 0px 0px 2px rgba(0, 0, 0, 0.2)",
+      md: "0px 0px 0px 3px rgba(0, 0, 0, 0.5)",
+      lg: "0px 0px 0px 3px rgba(0, 0, 0, 0.8)",
+      none: defaultTheme.boxShadow.none,
+    },
+    borderRadius: {
+      ...defaultTheme.borderRadius,
+      "3xl": "20px",
+      "4xl": "24px",
+    },
     colors: {
-      white: colors.white,
+      white: "#FFFFFF",
+      transparent: "transparent",
       green: {
         900: "#166534",
         800: "#15803D",
