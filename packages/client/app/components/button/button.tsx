@@ -29,9 +29,9 @@ const buttonStyles = cva("outline-none font-semibold transition-all", {
       ],
     },
     size: {
-      small: ["text-xs py-2 px-5 active:shadow-sm rounded-2xl"],
-      medium: ["text-sm py-2 px-6 min-h-[36px] active:shadow-md rounded-3xl"],
-      large: ["text-base py-[0.625rem] px-8 active:shadow-lg rounded-3xl"],
+      small: "text-xs py-2 px-5 active:shadow-sm rounded-2xl",
+      medium: "text-sm py-2 px-6 min-h-[36px] active:shadow-md rounded-3xl",
+      large: "text-base py-[0.625rem] px-8 active:shadow-lg rounded-3xl",
     },
     danger: {
       true: "text-white",
