@@ -1,8 +1,8 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import FormInput from "./input";
+import FormInput from "../input";
 
 const meta: Meta<typeof FormInput> = {
-  title: "Example/FormInput",
+  title: "Components/Forms/FormInput",
   component: FormInput,
   tags: ["autodocs"],
   args: {
@@ -24,9 +24,9 @@ export const Disabled: Story = {
   },
 };
 
-export const Danger: Story = {
+export const Error: Story = {
   args: {
-    danger: true,
+    isError: true,
   },
 };
 

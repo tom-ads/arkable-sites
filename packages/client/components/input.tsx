@@ -1,11 +1,13 @@
 import { VariantProps, cva } from "class-variance-authority";
+import { useFormContext } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 
 type FormInputBaseProps = VariantProps<typeof inputStyling>;
 
-interface FormInputProps
+export interface FormInputProps
   extends React.HTMLAttributes<HTMLInputElement>,
     FormInputBaseProps {
+  name: string;
   disabled?: boolean;
 }
 
@@ -23,13 +25,13 @@ export const inputStyling = cva(
         large:
           "px-5 py-[0.625rem] text-base leading-[1.375rem] focus:shadow-lg",
       },
-      danger: {
+      isError: {
         true: "border-red-900 text-red-900 focus:shadow-red-200 focus:border-red-900 placeholder:text-red-800",
       },
     },
     defaultVariants: {
       size: "medium",
-      danger: false,
+      isError: false,
     },
   }
 );
@@ -37,15 +39,19 @@ export const inputStyling = cva(
 export default function FormInput({
   size,
   className,
-  danger,
+  isError,
+  name,
   disabled = false,
   ...props
 }: FormInputProps): JSX.Element {
+  const { register } = useFormContext();
+
   return (
     <input
       {...props}
       disabled={disabled}
-      className={twMerge(inputStyling({ size, danger }), className)}
+      className={twMerge(inputStyling({ size, isError }), className)}
+      {...register(name)}
     />
   );
 }

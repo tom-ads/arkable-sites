@@ -94,13 +94,14 @@ export default function Button({
   intent,
   danger,
   disabled,
+  type = "button",
   children,
   ...props
 }: ButtonProps): JSX.Element {
   return (
     <button
       {...props}
-      type="button"
+      type={type}
       disabled={disabled}
       className={twMerge(
         buttonStyles({ size, intent, danger, disabled }),

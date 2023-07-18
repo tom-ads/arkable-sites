@@ -5,5 +5,5 @@ type FormControlProps = {
 };
 
 export default function FormControl({ children }: FormControlProps) {
-  return <fieldset>{children}</fieldset>;
+  return <div>{children}</div>;
 }

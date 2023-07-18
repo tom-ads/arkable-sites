@@ -10,6 +10,8 @@ extend type Query {
     users(search: String @like(key: "lastname", template: "%{}%")): [User!]!
         @all
 
+    user(@validation(''))
+
     "Return the specified user"
     user(id: String! @eq): User @find
 }
