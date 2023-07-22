@@ -48,7 +48,9 @@ export default function Form<
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit}>
         {/* fieldsets use min-width: min-content by default, so we override it */}
-        <fieldset className="min-w-0">{children(methods)}</fieldset>
+        <fieldset className="flex flex-col w-full min-w-0">
+          {children(methods)}
+        </fieldset>
       </form>
     </FormProvider>
   );

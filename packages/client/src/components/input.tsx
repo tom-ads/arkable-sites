@@ -13,7 +13,7 @@ export interface FormInputProps
 
 export const inputStyling = cva(
   [
-    "outline-none placeholder:text-grey-400 rounded-4xl text-grey-800 transition-all border border-grey-200",
+    "outline-none placeholder:text-grey-400 rounded-4xl text-grey-800 transition-all border border-grey-200 w-full",
     "focus:border-grey-950 focus:shadow-grey-200",
     "disabled:border-grey-300 disabled:bg-grey-100 disabled:text-grey-300 disabled:shadow-none",
   ],
@@ -49,9 +49,9 @@ export default function FormInput({
   return (
     <input
       {...props}
+      {...register(name)}
       disabled={disabled}
       className={twMerge(inputStyling({ size, isError }), className)}
-      {...register(name)}
     />
   );
 }

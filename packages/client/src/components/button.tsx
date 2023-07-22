@@ -6,6 +6,7 @@ type ButtonBaseProps = VariantProps<typeof buttonStyles>;
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
     ButtonBaseProps {
+  block?: boolean;
   disabled?: boolean;
 }
 
@@ -38,6 +39,9 @@ const buttonStyles = cva("outline-none font-semibold transition-all", {
     },
     disabled: {
       true: "pointer-events-none cursor-not-allowed select-none",
+    },
+    block: {
+      true: "w-full",
     },
   },
   compoundVariants: [
@@ -85,6 +89,7 @@ const buttonStyles = cva("outline-none font-semibold transition-all", {
     size: "medium",
     danger: false,
     disabled: false,
+    block: false,
   },
 });
 
@@ -94,6 +99,7 @@ export default function Button({
   intent,
   danger,
   disabled,
+  block,
   type = "button",
   children,
   ...props
@@ -104,7 +110,7 @@ export default function Button({
       type={type}
       disabled={disabled}
       className={twMerge(
-        buttonStyles({ size, intent, danger, disabled }),
+        buttonStyles({ size, intent, danger, disabled, block }),
         className
       )}
     >

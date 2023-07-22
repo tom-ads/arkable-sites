@@ -8,7 +8,7 @@ export default function EyeClosedIcon({
       xmlns="http://www.w3.org/2000/svg"
       className={className}
       viewBox="0 0 24 24"
-      strokeWidth="1.5"
+      strokeWidth="2"
       stroke="currentColor"
       fill="none"
       strokeLinecap="round"

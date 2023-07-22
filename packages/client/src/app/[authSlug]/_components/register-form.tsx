@@ -3,13 +3,14 @@
 import FormControl from "@/components/control";
 import Form from "@/components/form";
 import FormInput from "@/components/input";
+import FormPasswordInput from "@/components/password-input";
 
 type FormFields = {
   email: string;
   password: string;
 };
 
-export default function LoginForm(): JSX.Element {
+export default function RegisterForm(): JSX.Element {
   const handleSubmit = () => {};
 
   return (
@@ -17,10 +18,18 @@ export default function LoginForm(): JSX.Element {
       {({ formState: { errors } }) => (
         <>
           <FormControl>
-            <FormInput name="email" isError={!!errors?.email?.message} />
+            <FormInput
+              name="email"
+              placeholder="Email"
+              isError={!!errors?.email?.message}
+            />
           </FormControl>
           <FormControl>
-            <FormInput name="email" isError={!!errors?.email?.message} />
+            <FormPasswordInput
+              name="password"
+              placeholder="Password"
+              isError={!!errors?.email?.message}
+            />
           </FormControl>
         </>
       )}
