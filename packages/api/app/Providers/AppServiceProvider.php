@@ -23,9 +23,9 @@ class AppServiceProvider extends ServiceProvider
     {
         // Set global password rules
         Password::defaults(function () {
-            $rule = Password::min(10);
+            $rule = Password::min(8);
 
-            if(Config::get('APP_ENV') !== 'production') {
+            if(Config::get('APP_ENV') === 'production') {
                 $rule->mixedCase()->letters()->symbols()->uncompromised();
             }
 

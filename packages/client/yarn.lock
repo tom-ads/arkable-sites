@@ -4179,6 +4179,11 @@
     "@0no-co/graphql.web" "^1.0.1"
     wonka "^6.3.2"
 
+"@urql/next@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@urql/next/-/next-1.0.0.tgz#694317946891e6ee2e3eb4606c1b3854377a756b"
+  integrity sha512-t3c3eBccmbAzi1Y2vH8ZubSwFgJ3yA2rc4427oYfnJdLl0o7Zh4LrPxUCz1yVdCz4N/MebrnLzDiM5tAeDd9yA==
+
 "@webassemblyjs/ast@1.11.6", "@webassemblyjs/ast@^1.11.5":
   version "1.11.6"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.11.6.tgz#db046555d3c413f8966ca50a95176a0e2c642e24"

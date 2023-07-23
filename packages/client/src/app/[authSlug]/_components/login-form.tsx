@@ -5,17 +5,47 @@ import FormControl from "@/components/control";
 import Form from "@/components/form";
 import FormInput from "@/components/input";
 import FormPasswordInput from "@/components/password-input";
+import { LoginInput } from "@/gql/graphql";
+import { gql, useMutation } from "urql";
+import { z } from "zod";
 
-type FormFields = {
-  email: string;
-  password: string;
-};
+const loginSchema = z.object({
+  email: z.string().email().min(1, { message: "Email is required" }),
+  password: z.string().min(1, { message: "Password is required" }),
+});
+
+const LOGIN_MUTATION = gql`
+  mutation LoginMutation($input: LoginInput!) {
+    login(input: $input) {
+      user {
+        id
+        email
+      }
+    }
+  }
+`;
 
 export default function LoginForm(): JSX.Element {
-  const handleSubmit = () => {};
+  const [{ fetching, error }, login] = useMutation<LoginInput>(LOGIN_MUTATION);
+
+  const handleSubmit = async (formValues: LoginInput) => {
+    await login({ input: formValues })
+      .then((res) => {})
+      .catch((e) => {
+        console.log(e);
+      });
+  };
 
   return (
-    <Form<FormFields> onSubmit={handleSubmit}>
+    <Form<LoginInput, typeof loginSchema>
+      mode="onSubmit"
+      onSubmit={handleSubmit}
+      validationSchema={loginSchema}
+      defaultValues={{
+        email: "",
+        password: "",
+      }}
+    >
       {({ formState: { errors } }) => (
         <>
           <FormControl>

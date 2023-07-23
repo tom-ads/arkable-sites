@@ -26,7 +26,7 @@ export const inputStyling = cva(
           "px-5 py-[0.625rem] text-base leading-[1.375rem] focus:shadow-lg",
       },
       isError: {
-        true: "border-red-900 text-red-900 focus:shadow-red-200 focus:border-red-900 placeholder:text-red-800",
+        true: "border-red-900 focus:shadow-red-200 focus:border-red-900",
       },
     },
     defaultVariants: {
