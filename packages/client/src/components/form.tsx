@@ -1,6 +1,6 @@
 import { FormEvent, ReactNode } from "react";
 import {
-  DeepPartial,
+  DefaultValues,
   FieldValues,
   FormProvider,
   UseFormReturn,
@@ -9,6 +9,8 @@ import {
 } from "react-hook-form";
 import { ZodType } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { CombinedError } from "urql";
+import useURQLError from "@/hooks/useURQLError";
 
 export type FormProps<
   TFormValues extends FieldValues,
@@ -17,8 +19,9 @@ export type FormProps<
   onSubmit: (fields: TFormValues, methods?: UseFormReturn<TFormValues>) => void;
   className?: string;
   validationSchema?: ValidationSchema;
+  error?: CombinedError;
   children: (methods: UseFormReturn<TFormValues>) => ReactNode;
-  defaultValues?: DeepPartial<TFormValues>;
+  defaultValues?: DefaultValues<TFormValues>;
   mode?: keyof ValidationMode;
 };
 
@@ -27,6 +30,7 @@ export default function Form<
   ValidationSchema extends ZodType = ZodType
 >({
   onSubmit,
+  error,
   validationSchema,
   defaultValues,
   mode = "all",
@@ -44,10 +48,12 @@ export default function Form<
     methods.handleSubmit((data: TFormValues) => onSubmit(data, methods))(event);
   };
 
+  useURQLError<TFormValues>(error, methods.setError, { overridePrefix: true });
+
   return (
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit}>
-        {/* fieldsets use min-width: min-content by default, so we override it */}
+        {/* fieldset uses min-width: min-content by default, so we override it */}
         <fieldset className="flex flex-col w-full min-w-0">
           {children(methods)}
         </fieldset>
