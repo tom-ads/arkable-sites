@@ -9,7 +9,6 @@
     "lint": "next lint",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "codegen": "graphql-codegen",
     "unit:jest": "jest --watch",
     "e2e:cypress": "cypress open",
     "e2e:cypress:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\""
@@ -19,6 +18,8 @@
     "@urql/next": "^1.0.0",
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.6.1",
+    "classnames": "^2.3.2",
+    "jotai": "^2.2.2",
     "next": "13.4.5",
     "postcss": "8.4.24",
     "react": "18.2.0",
@@ -29,8 +30,6 @@
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@graphql-codegen/cli": "^4.0.1",
-    "@graphql-codegen/client-preset": "^4.0.1",
     "@storybook/addon-essentials": "^7.0.24",
     "@storybook/addon-interactions": "^7.0.24",
     "@storybook/addon-links": "^7.0.24",
