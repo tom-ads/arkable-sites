@@ -1,0 +1,22 @@
+input LoginInput @validator {
+    email: String!
+    password: String!
+}
+
+type User {
+    id: ID!
+    forename: String!
+    surname: String!
+    email: String!
+    password: String!
+    isHost: Boolean!
+}
+
+type Session {
+    user: User
+}
+
+extend type Mutation {
+    login(input: LoginInput! @spread): Session
+        @field(resolver: "App\\GraphQL\\Mutations\\Auth\\LoginMutation")
+}
