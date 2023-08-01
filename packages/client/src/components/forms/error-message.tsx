@@ -1,4 +1,4 @@
-import { cva } from "class-variance-authority";
+import { VariantProps, cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
 const styling = cva("text-red-900 mt-2 font-medium", {
@@ -14,9 +14,8 @@ const styling = cva("text-red-900 mt-2 font-medium", {
   },
 });
 
-type FormErrorMessageProps = typeof styling & {
+type FormErrorMessageProps = VariantProps<typeof styling> & {
   className?: string;
-  size?: "sm" | "md" | "lg";
   children: React.ReactNode;
 };
 
