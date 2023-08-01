@@ -2,8 +2,12 @@
 scalar DateTime
     @scalar(class: "Nuwave\\Lighthouse\\Schema\\Types\\Scalars\\DateTime")
 
-type Query
+type Query {
+    root: String @field(resolver: "App\\GraphQL\\Queries\\RootQuery")
+}
 
-type Mutations
+type Mutations {
+    root: String @field(resolver: "App\\GraphQL\\Mutations\\RootMutation")
+}
 
 #import auth/*.graphql

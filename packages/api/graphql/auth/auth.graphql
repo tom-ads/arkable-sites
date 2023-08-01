@@ -5,8 +5,11 @@ input LoginInput @validator {
 
 type User {
     id: ID!
+    forename: String!
+    surname: String!
     email: String!
-    password: String
+    password: String!
+    isHost: Boolean!
 }
 
 type Session {
@@ -14,6 +17,6 @@ type Session {
 }
 
 extend type Mutation {
-    login(input: LoginInput @spread): Session
+    login(input: LoginInput! @spread): Session
         @field(resolver: "App\\GraphQL\\Mutations\\Auth\\LoginMutation")
 }

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FormInputProps, inputStyling } from "./input";
-import { EyeClosedIcon, EyeOpenIcon } from "./icons";
+import { EyeClosedIcon, EyeOpenIcon } from "../icons";
 import { useFormContext } from "react-hook-form";
 import { twMerge } from "tailwind-merge";
 

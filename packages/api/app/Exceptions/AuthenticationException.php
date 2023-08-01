@@ -10,7 +10,7 @@ class AuthenticationException extends Exception implements ClientAware, Provides
 {
     public function __construct(string $message)
     {
-        parent::__construct($message);
+        parent::__construct($message, 'AUTHENTICATION_ERROR');
     }
 
     public function isClientSafe(): bool

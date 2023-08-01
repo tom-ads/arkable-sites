@@ -20,17 +20,16 @@ export const inputStyling = cva(
   {
     variants: {
       size: {
-        small: "px-4 py-[0.375rem] text-xs focus:shadow-sm",
-        medium: "px-4 py-2 text-sm focus:shadow-md",
-        large:
-          "px-5 py-[0.625rem] text-base leading-[1.375rem] focus:shadow-lg",
+        sm: "px-4 py-[0.375rem] text-xs focus:shadow-sm",
+        md: "px-4 py-2 text-sm focus:shadow-md",
+        lg: "px-5 py-[0.625rem] text-base leading-[1.375rem] focus:shadow-lg",
       },
       isError: {
         true: "border-red-900 focus:shadow-red-200 focus:border-red-900",
       },
     },
     defaultVariants: {
-      size: "medium",
+      size: "md",
       isError: false,
     },
   }
