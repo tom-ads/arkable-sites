@@ -1,8 +1,13 @@
-import LoginForm from "./login-form";
 import { ArkoraIcon } from "@/components/icons";
 import { H1 } from "@/components/typography/heading";
+import { LoginForm } from "@/features/auth/components/forms/login-form";
+import { Metadata } from "next";
 
-export function LoginView() {
+export const metadata: Metadata = {
+  title: "Login",
+};
+
+export default function LoginPage() {
   return (
     <div className="flex flex-col justify-center min-h-screen py-8">
       {/* Heading */}
