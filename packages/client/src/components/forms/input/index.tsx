@@ -35,7 +35,7 @@ export const inputStyling = cva(
   }
 );
 
-export default function FormInput({
+export function FormInput({
   size,
   className,
   isError,

@@ -6,7 +6,7 @@ type FormControlProps = {
   children: ReactNode;
 };
 
-export default function FormControl({ className, children }: FormControlProps) {
+export function FormControl({ className, children }: FormControlProps) {
   return (
     <div className={twMerge("w-full min-w-0 mt-4", className)}>{children}</div>
   );

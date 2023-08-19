@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import FormControl from "../forms/control";
+import { FormControl } from ".";
 
 test("control renders, does not throw", () => {
   render(<FormControl>Control</FormControl>);

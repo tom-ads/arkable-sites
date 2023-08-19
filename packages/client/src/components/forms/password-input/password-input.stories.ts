@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import FormPasswordInput from "../forms/password-input";
-import FormInput from "../forms/input";
+import { FormPasswordInput } from ".";
+import { FormInput } from "./../input";
 
 const meta: Meta<typeof FormInput> = {
   title: "Components/Forms/PasswordInput",
@@ -35,18 +35,18 @@ export const Error: Story = {
 
 export const Small: Story = {
   args: {
-    size: "small",
+    size: "sm",
   },
 };
 
 export const Medium: Story = {
   args: {
-    size: "medium",
+    size: "md",
   },
 };
 
 export const Large: Story = {
   args: {
-    size: "large",
+    size: "lg",
   },
 };

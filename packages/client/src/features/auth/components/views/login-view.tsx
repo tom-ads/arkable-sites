@@ -2,7 +2,7 @@ import LoginForm from "./login-form";
 import { ArkoraIcon } from "@/components/icons";
 import { H1 } from "@/components/typography/heading";
 
-export default function LoginView() {
+export function LoginView() {
   return (
     <div className="flex flex-col justify-center min-h-screen py-8">
       {/* Heading */}

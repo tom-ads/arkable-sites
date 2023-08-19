@@ -6,7 +6,7 @@ import { cacheExchange, createClient, fetchExchange, ssrExchange } from "urql";
 
 const ssr = ssrExchange();
 const client = createClient({
-  url: "http://localhost:8080/graphql",
+  url: process.env.NEXT_PUBLIC_GRAPHQL_API_BASE_URL!,
   exchanges: [cacheExchange, ssr, fetchExchange],
 });
 

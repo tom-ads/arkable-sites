@@ -1,5 +1,5 @@
+import { LoginView } from "@/features/auth/components/views/login-view";
 import { notFound } from "next/navigation";
-import LoginView from "./_components/login-view";
 
 type AuthPageProps = {
   params: { authSlug: string };

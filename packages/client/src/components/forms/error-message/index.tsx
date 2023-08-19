@@ -19,7 +19,7 @@ type FormErrorMessageProps = VariantProps<typeof styling> & {
   children: React.ReactNode;
 };
 
-export default function FormErrorMessage({
+export function FormErrorMessage({
   className,
   size,
   children,

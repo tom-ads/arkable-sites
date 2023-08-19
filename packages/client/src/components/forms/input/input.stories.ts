@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import FormInput from "../forms/input";
+import FormInput from ".";
 
 const meta: Meta<typeof FormInput> = {
   title: "Components/Forms/FormInput",
@@ -34,18 +34,18 @@ export const Error: Story = {
 
 export const Small: Story = {
   args: {
-    size: "small",
+    size: "sm",
   },
 };
 
 export const Medium: Story = {
   args: {
-    size: "medium",
+    size: "md",
   },
 };
 
 export const Large: Story = {
   args: {
-    size: "large",
+    size: "lg",
   },
 };

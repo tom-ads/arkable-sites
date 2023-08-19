@@ -10,7 +10,7 @@ type FormFields = {
   password: string;
 };
 
-export default function RegisterForm(): JSX.Element {
+export function RegisterForm(): JSX.Element {
   const handleSubmit = () => {};
 
   return (

@@ -25,7 +25,7 @@ export type FormProps<
   mode?: keyof ValidationMode;
 };
 
-export default function Form<
+export function Form<
   TFormValues extends FieldValues,
   ValidationSchema extends ZodType = ZodType
 >({
