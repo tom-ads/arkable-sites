@@ -1,8 +1,4 @@
-export default function ArkoraIcon({
-  className,
-}: {
-  className?: string;
-}): JSX.Element {
+export function ArkoraIcon({ className }: { className?: string }): JSX.Element {
   return (
     <svg
       fill="none"

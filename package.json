@@ -9,6 +9,7 @@
   "scripts": {
     "dev": "concurrently \"yarn start:client \" \"yarn codegen:watch\"",
     "start:client": "yarn workspace @arkable/client dev",
+    "start:storybook": "yarn workspace @arkable/client storybook",
     "codegen": "graphql-codegen",
     "codegen:watch": "graphql-codegen --watch"
   },

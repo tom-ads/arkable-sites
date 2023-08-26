@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import FormInput from ".";
+import { FormInput } from ".";
 
 const meta: Meta<typeof FormInput> = {
   title: "Components/Forms/FormInput",

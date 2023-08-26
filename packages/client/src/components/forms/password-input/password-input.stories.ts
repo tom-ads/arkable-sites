@@ -1,8 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { FormPasswordInput } from ".";
-import { FormInput } from "./../input";
 
-const meta: Meta<typeof FormInput> = {
+const meta: Meta<typeof FormPasswordInput> = {
   title: "Components/Forms/PasswordInput",
   component: FormPasswordInput,
   tags: ["autodocs"],
@@ -13,7 +12,7 @@ const meta: Meta<typeof FormInput> = {
 
 export default meta;
 
-type Story = StoryObj<typeof FormInput>;
+type Story = StoryObj<typeof FormPasswordInput>;
 
 // State
 

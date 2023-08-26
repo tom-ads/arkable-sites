@@ -1,7 +1,6 @@
 import type { Preview } from "@storybook/react";
 
-// Import tailwind styles as Storybook wont
-import "./../css/globals.css";
+import "./../src/css/globals.css";
 
 const preview: Preview = {
   parameters: {
