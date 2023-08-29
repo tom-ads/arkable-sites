@@ -15,8 +15,8 @@ final class LoginInputValidator extends Validator
     public function rules(): array
     {
         return [
-           'email' => ['required', 'email'],
-           'password' => ['required', Password::defaults()]
+            'email' => ['required', 'email'],
+            'password' => ['required']
         ];
     }
 
@@ -25,7 +25,7 @@ final class LoginInputValidator extends Validator
         return [
             'email.required' => "Email is required",
             'email.email' => 'Valid email is required',
-            
+
             'password.required' => 'Password is required',
             'password.letters' => 'Password requires at least 1 letter',
             'password.numbers' => 'Password requires at least 1 number',

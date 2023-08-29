@@ -2,6 +2,7 @@
 
 import { UrqlProvider } from "@urql/next";
 import { Provider } from "jotai";
+import { SessionProvider } from "next-auth/react";
 import { cacheExchange, createClient, fetchExchange, ssrExchange } from "urql";
 
 const ssr = ssrExchange();
@@ -13,7 +14,9 @@ const client = createClient({
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <UrqlProvider client={client} ssr={ssr}>
-      <Provider>{children}</Provider>
+      <Provider>
+        <SessionProvider>{children}</SessionProvider>
+      </Provider>
     </UrqlProvider>
   );
 }

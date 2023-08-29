@@ -1,13 +1,16 @@
 import { ArkoraIcon } from "@/components/icons";
 import { H1 } from "@/components/typography/heading";
-import { LoginForm } from "@/features/auth/components/forms/login-form";
+import { LoginForm } from "@/app/_features/auth/components/forms/login-form";
 import { Metadata } from "next";
+import { getCsrfToken } from "next-auth/react";
 
 export const metadata: Metadata = {
   title: "Login",
 };
 
-export default function LoginPage() {
+export default async function LoginPage() {
+  const csrfToken = await getCsrfToken();
+
   return (
     <div className="flex flex-col justify-center min-h-screen py-8">
       {/* Heading */}

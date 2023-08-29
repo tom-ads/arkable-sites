@@ -13,14 +13,19 @@ import {
   FormInput,
   FormPasswordInput,
 } from "@/components/forms";
-import { useLoginMutation } from "@/features/auth/api/mutations/login.generated";
+import { useLoginMutation } from "@/app/_features/auth/api/mutations/login.generated";
+import { signIn } from "next-auth/react";
+
+type LoginPageProps = {
+  csrfToken?: string;
+};
 
 const loginSchema = z.object({
   email: z.string().email().min(1, { message: "Email is required" }),
   password: z.string().min(1, { message: "Password is required" }),
 });
 
-export function LoginForm(): JSX.Element {
+export function LoginForm({ csrfToken }: LoginPageProps): JSX.Element {
   const router = useRouter();
 
   const setAuthAtom = useSetAtom(authAtom);
@@ -28,11 +33,17 @@ export function LoginForm(): JSX.Element {
   const [{ error: loginError }, login] = useLoginMutation();
 
   const handleSubmit = async (formValues: LoginInput) => {
-    const response = await login({ input: formValues });
-
-    if (response.error) return;
-
-    router.push("/properties");
+    await signIn("credentials", {
+      ...formValues,
+      redirect: false,
+      // callbackUrl: `${window.location.origin}`,
+    })
+      .then((res) => {
+        console.log("did login", res);
+      })
+      .catch((err) => {
+        console.log("err login", err);
+      });
   };
 
   return (
@@ -48,6 +59,7 @@ export function LoginForm(): JSX.Element {
     >
       {({ formState: { errors } }) => (
         <>
+          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <FormControl>
             <FormInput
               name="email"
