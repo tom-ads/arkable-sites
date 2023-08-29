@@ -22,12 +22,14 @@ export const LOGIN_MUTATION = gql`
         surname
         email
       }
+      token {
+        access_token
+      }
     }
   }
 `;
 
 const handler = NextAuth({
-  secret: process.env.NEXT_AUTH_SECRET,
   pages: {
     signIn: "/login",
   },
@@ -45,7 +47,6 @@ const handler = NextAuth({
           },
         });
         console.log(data);
-        console.log(error?.graphQLErrors);
         if (error?.message) {
           throw new Error(error?.message);
         }
@@ -57,6 +58,9 @@ const handler = NextAuth({
   callbacks: {
     signIn({ user }) {
       return !!user;
+    },
+    jwt({ token, user }) {
+      return { ...token, ...user };
     },
   },
 });
