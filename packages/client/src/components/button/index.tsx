@@ -1,16 +1,16 @@
 import { twMerge } from "tailwind-merge";
 import { type VariantProps, cva } from "class-variance-authority";
 
-type ButtonBaseProps = VariantProps<typeof buttonStyles>;
+export type ButtonStyling = VariantProps<typeof buttonStyles>;
 
 interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    ButtonBaseProps {
+    ButtonStyling {
   block?: boolean;
   disabled?: boolean;
 }
 
-const buttonStyles = cva("outline-none font-semibold transition-all", {
+export const buttonStyles = cva("outline-none font-semibold transition-all", {
   variants: {
     intent: {
       primary: [
