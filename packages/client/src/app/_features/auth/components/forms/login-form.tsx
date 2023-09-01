@@ -15,6 +15,8 @@ import {
 } from "@/components/forms";
 import { useLoginMutation } from "@/app/_features/auth/api/mutations/login.generated";
 import { signIn } from "next-auth/react";
+import { useState } from "react";
+import { CombinedError } from "urql";
 
 type LoginPageProps = {
   csrfToken?: string;
@@ -28,15 +30,16 @@ const loginSchema = z.object({
 export function LoginForm({ csrfToken }: LoginPageProps): JSX.Element {
   const router = useRouter();
 
-  const setAuthAtom = useSetAtom(authAtom);
+  const [loginError, setLoginError] = useState<CombinedError | undefined>(
+    undefined
+  );
 
-  const [{ error: loginError }, login] = useLoginMutation();
+  const setAuthAtom = useSetAtom(authAtom);
 
   const handleSubmit = async (formValues: LoginInput) => {
     await signIn("credentials", {
       ...formValues,
       redirect: false,
-      // callbackUrl: `${window.location.origin}`,
     })
       .then((res) => {
         console.log("did login", res);

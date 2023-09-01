@@ -1,7 +1,13 @@
+import { Header } from "@/components/header";
 import { PropsWithChildren } from "react";
 
 type DashboardParops = PropsWithChildren;
 
 export default function DashboardLayout({ children }: DashboardParops) {
-  return <main className="">{children}</main>;
+  return (
+    <>
+      <Header />
+      <main className="w-full">{children}</main>
+    </>
+  );
 }
