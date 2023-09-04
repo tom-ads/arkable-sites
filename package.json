@@ -23,6 +23,6 @@
     "graphql": "^16.7.1"
   },
   "peerDependencies": {
-    "@parcel/watcher": "^2.2.0"
+    "@parcel/watcher": "^2.3.0"
   }
 }

@@ -14,7 +14,7 @@ services:
     container_name: arkable_db
     working_dir: /application
     volumes:
-      - ".:/application"
+      - "arkable_mysql:/var/lib/mysql"
     environment:
       - MYSQL_ROOT_PASSWORD=password
       - MYSQL_DATABASE=arkable
@@ -39,14 +39,23 @@ services:
     depends_on:
       - db
       - mailhog
+      - php-fpm
 
   php-fpm:
     build: .docker/api/php-fpm
-    container_name: arkable_php
     working_dir: /application
     volumes:
       - "./packages/api:/application"
       - "./.docker/api/php-fpm/php-ini-overrides.ini:/etc/php/8.2/fpm/conf.d/99-overrides.ini"
+    networks:
+      - arkable_network
+
+  redis:
+    image: redis:6.2
+    ports:
+      - 6379:6379
+    volumes:
+      - arkable_redis:/data
     networks:
       - arkable_network
     depends_on:
@@ -55,3 +64,9 @@ services:
 networks:
   arkable_network:
     driver: bridge
+
+volumes:
+  arkable_redis:
+    driver: local
+  arkable_mysql:
+    driver: local

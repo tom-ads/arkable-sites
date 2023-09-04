@@ -2,16 +2,12 @@ FROM php:8.2-fpm
 
 WORKDIR "/application"
 
-ARG DEBIAN_FRONTEND=nointeractive
-
-RUN apt-get update -y; \
-    apt-get -y install zlib1g-dev libpng-dev libzip-dev
-
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
-
-RUN docker-php-ext-install gd
-RUN docker-php-ext-install zip
-RUN docker-php-ext-install exif
-RUN docker-php-ext-install pdo_mysql
+RUN apt-get update \
+  && apt-get upgrade -y \
+  && apt-get install -y libzip-dev libpng-dev libjpeg-dev \
+  && pecl install -o -f redis \
+  && rm -rf /tmp/pear \
+  && docker-php-ext-install mysqli pdo pdo_mysql zip exif gd \
+  && docker-php-ext-enable redis
 
 COPY --from=composer /usr/bin/composer /usr/bin/composer
