@@ -10,7 +10,7 @@ import {
 import { ZodType } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { CombinedError } from "urql";
-import useURQLError from "@/hooks/useURQLError";
+import useURQLError from "@/hooks/use-urql-error";
 
 export type FormProps<
   TFormValues extends FieldValues,

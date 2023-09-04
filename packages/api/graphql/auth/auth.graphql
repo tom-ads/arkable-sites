@@ -12,18 +12,15 @@ type User {
     isHost: Boolean!
 }
 
-type Tokenable {
-    access_token: String!
-    token_type: String!
-    expires_in: Int!
-}
-
 type Session {
     user: User
-    token: Tokenable
 }
 
 extend type Mutation {
     login(input: LoginInput! @spread): Session
         @field(resolver: "App\\GraphQL\\Mutations\\Auth\\LoginMutation")
+}
+
+extend type Query {
+    session: Session @auth
 }

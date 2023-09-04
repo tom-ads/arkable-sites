@@ -1,0 +1,10 @@
+type Listing {
+    id: String!
+    title: String!
+    description: String
+    price: Int!
+}
+
+extend type Query @guard {
+    listing(id: ID! @eq): Listing @first
+}

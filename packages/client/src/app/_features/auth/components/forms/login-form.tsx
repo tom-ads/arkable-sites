@@ -1,11 +1,5 @@
 "use client";
 
-import authAtom from "@/atoms/auth";
-import Button from "@/components/button";
-import { useSetAtom } from "jotai";
-import { useRouter } from "next/navigation";
-import { z } from "zod";
-import { LoginInput } from "@/graphql/types";
 import {
   Form,
   FormControl,
@@ -13,40 +7,31 @@ import {
   FormInput,
   FormPasswordInput,
 } from "@/components/forms";
+import { z } from "zod";
+import { Button } from "@/components/button";
+import { useRouter } from "next/navigation";
+import { LoginInput } from "@/graphql/types";
 import { useLoginMutation } from "@/app/_features/auth/api/mutations/login.generated";
-import { signIn } from "next-auth/react";
-import { useState } from "react";
-import { CombinedError } from "urql";
-
-type LoginPageProps = {
-  csrfToken?: string;
-};
 
 const loginSchema = z.object({
-  email: z.string().email().min(1, { message: "Email is required" }),
+  email: z
+    .string()
+    .email({ message: "Email is required" })
+    .min(1, { message: "Email is required" }),
   password: z.string().min(1, { message: "Password is required" }),
 });
 
-export function LoginForm({ csrfToken }: LoginPageProps): JSX.Element {
+export function LoginForm(): JSX.Element {
   const router = useRouter();
 
-  const [loginError, setLoginError] = useState<CombinedError | undefined>(
-    undefined
-  );
-
-  const setAuthAtom = useSetAtom(authAtom);
+  const [{ error: loginError }, login] = useLoginMutation();
 
   const handleSubmit = async (formValues: LoginInput) => {
-    await signIn("credentials", {
-      ...formValues,
-      redirect: false,
-    })
-      .then((res) => {
-        console.log("did login", res);
-      })
-      .catch((err) => {
-        console.log("err login", err);
-      });
+    const response = await login({ input: formValues });
+
+    if (!response?.error) {
+      router.push("/dashboard");
+    }
   };
 
   return (
@@ -62,7 +47,6 @@ export function LoginForm({ csrfToken }: LoginPageProps): JSX.Element {
     >
       {({ formState: { errors } }) => (
         <>
-          <input name="csrfToken" type="hidden" defaultValue={csrfToken} />
           <FormControl>
             <FormInput
               name="email"
@@ -80,6 +64,9 @@ export function LoginForm({ csrfToken }: LoginPageProps): JSX.Element {
               placeholder="Password"
               isError={!!errors?.password?.message}
             />
+            {!!errors.password?.message && (
+              <FormErrorMessage>{errors.password.message}</FormErrorMessage>
+            )}
           </FormControl>
 
           <FormControl className="mt-8">

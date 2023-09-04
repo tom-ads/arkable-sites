@@ -93,7 +93,7 @@ export const buttonStyles = cva("outline-none font-semibold transition-all", {
   },
 });
 
-export default function Button({
+export function Button({
   className,
   size,
   intent,

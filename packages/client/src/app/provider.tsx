@@ -2,21 +2,14 @@
 
 import { UrqlProvider } from "@urql/next";
 import { Provider } from "jotai";
-import { SessionProvider } from "next-auth/react";
-import { cacheExchange, createClient, fetchExchange, ssrExchange } from "urql";
+import { makeClient, ssr } from "./_helpers/client";
 
-const ssr = ssrExchange();
-const client = createClient({
-  url: process.env.NEXT_PUBLIC_GRAPHQL_API_BASE_URL!,
-  exchanges: [cacheExchange, ssr, fetchExchange],
-});
+export const client = makeClient();
 
 export default function Providers({ children }: { children: React.ReactNode }) {
   return (
     <UrqlProvider client={client} ssr={ssr}>
-      <Provider>
-        <SessionProvider>{children}</SessionProvider>
-      </Provider>
+      <Provider>{children}</Provider>
     </UrqlProvider>
   );
 }

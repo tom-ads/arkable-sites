@@ -1,10 +1,9 @@
 import { gql } from "@urql/core";
 
-export const LOGIN_MUTATION = gql`
-  mutation Login($input: LoginInput!) {
-    login(input: $input) {
+export const SESSION_QUERY = gql`
+  query Session {
+    session {
       user {
-        id
         forename
         surname
         email

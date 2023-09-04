@@ -2,11 +2,8 @@
 
 import { ButtonLink } from "@/components/button-link";
 import { H1 } from "@/components/typography/heading";
-import { useSession } from "next-auth/react";
 
 export function DashboardBackdrop() {
-  const session = useSession();
-
   return (
     <div className="max-w-[1129px] mx-auto px-8">
       <div className="flex items-center justify-between pt-8 pb-6">

@@ -16,6 +16,14 @@ export type Scalars = {
   DateTime: { input: any; output: any; }
 };
 
+export type Listing = {
+  __typename?: 'Listing';
+  description?: Maybe<Scalars['String']['output']>;
+  id: Scalars['String']['output'];
+  price: Scalars['Int']['output'];
+  title: Scalars['String']['output'];
+};
+
 export type LoginInput = {
   email: Scalars['String']['input'];
   password: Scalars['String']['input'];
@@ -38,7 +46,14 @@ export type Mutations = {
 
 export type Query = {
   __typename?: 'Query';
+  listing?: Maybe<Listing>;
   root?: Maybe<Scalars['String']['output']>;
+  session?: Maybe<Session>;
+};
+
+
+export type QueryListingArgs = {
+  id: Scalars['ID']['input'];
 };
 
 export type Session = {

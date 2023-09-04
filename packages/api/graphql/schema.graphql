@@ -11,3 +11,4 @@ type Mutations {
 }
 
 #import auth/*.graphql
+#import listing/*.graphql

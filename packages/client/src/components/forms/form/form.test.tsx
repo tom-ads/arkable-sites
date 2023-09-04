@@ -1,6 +1,5 @@
 import { render } from "@testing-library/react";
 import { Form } from ".";
-import { CombinedError } from "urql";
 
 type TestFields = {
   name: string;
