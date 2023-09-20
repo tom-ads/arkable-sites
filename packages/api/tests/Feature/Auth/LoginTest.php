@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Tests\TestCase;
@@ -15,12 +15,14 @@ class LoginTest extends TestCase
         ];
 
         User::factory()->state($payload)->create();
-        
+
         $response = $this->graphQL('
-            mutation Login($input: LoginInput) {
+            mutation Login($input: LoginInput!) {
                 login(input: $input) {
                     user {
                         id
+                        forename
+                        surname
                         email
                     }
                 }
@@ -39,7 +41,7 @@ class LoginTest extends TestCase
         ]);
     }
 
-    public function test_user_doesnt_exist_throws_authentication_exception(): void 
+    public function test_user_doesnt_exist_throws_authentication_exception(): void
     {
         $payload = [
             "email" => "test@example.com",
@@ -47,19 +49,21 @@ class LoginTest extends TestCase
         ];
 
         $response = $this->graphQL('
-            mutation Login($input: LoginInput) {
+            mutation Login($input: LoginInput!) {
                 login(input: $input) {
                     user {
                         id
+                        forename
+                        surname
                         email
                     }
                 }
             }
         ',  ['input' => $payload]);
 
-        self::assertSame('Incorrect email or password', $response->json('errors.0.message'));
+        self::assertSame('Email or password does not match', $response->json('errors.0.message'));
     }
- 
+
     public function test_invalid_payload_returns_validation_exceptions(): void
     {
         $payload = [
@@ -68,10 +72,12 @@ class LoginTest extends TestCase
         ];
 
         $response = $this->graphQL('
-            mutation Login($input: LoginInput) {
+            mutation Login($input: LoginInput!) {
                 login(input: $input) {
                     user {
                         id
+                        forename
+                        surname
                         email
                     }
                 }

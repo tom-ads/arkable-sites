@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Services\Fetchify\AddressService;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Validation\Rules\Password;
@@ -13,7 +14,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->singleton(AddressService::class, function () {
+            return new AddressService(
+                config('services.fetchify.key'),
+                config('services.fetchify.address.url')
+            );
+        });
     }
 
     /**
