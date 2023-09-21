@@ -1,6 +1,5 @@
 <?php
 
-use App\Enums\ListingStatus;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('listings', function (Blueprint $table) {
-            $table->uuid('id')->primary();
-            $table->foreignUuid('user_id');
-            $table->foreignUuid('listing_type_id');
+            $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('listing_type_id')->constrained('listing_types');
             $table->string('title');
             $table->text('description');
             $table->bigInteger('price');

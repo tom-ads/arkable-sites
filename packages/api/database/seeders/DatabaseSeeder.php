@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Enums\ListType;
+use App\Enums\UserRole as UserRoleEnum;
 use App\Models\Listing;
 use App\Models\ListingType;
 use App\Models\User;
@@ -13,15 +14,21 @@ class DatabaseSeeder extends Seeder
 {
     use WithoutModelEvents;
 
-    private function createUser(string $email, bool $isHost = false): User {
-        return User::factory()
-            ->state([ "email" => $email, "is_host" => $isHost ])
+    private function createUser(string $email, UserRoleEnum $role = UserRoleEnum::GUEST): User
+    {
+        $user = User::factory()
+            ->state(["email" => $email])
             ->create();
+
+        $user->roles()->create(["role" => $role->getValue()]);
+
+        return $user;
     }
 
-    private function setupHost() {
+    private function setupHost()
+    {
         // Create host
-        $hostUser = $this->createUser("dev+host@example.com", true);
+        $hostUser = $this->createUser("host@example.com", UserRoleEnum::HOST);
 
         // Retrieve listing types
         $apartmentListingType = ListingType::query()
@@ -42,16 +49,16 @@ class DatabaseSeeder extends Seeder
      * Seed the application's database.
      */
     public function run(): void
-    {   
-        // Call seeder(s)
+    {
+        // Call seeders
         $this->call([
             ListingTypeSeeder::class,
         ]);
 
-        // Create standard user
-        $this->createUser("dev+standard@example.com");
+        // Create guest user
+        $this->createUser("guest@example.com");
 
-        // Create host and associated listings
+        // Create host with listings
         $this->setupHost();
     }
 }

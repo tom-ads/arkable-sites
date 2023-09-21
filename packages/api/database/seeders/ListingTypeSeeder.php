@@ -4,14 +4,14 @@ namespace Database\Seeders;
 
 use App\Enums\ListType;
 use App\Models\ListingType;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Factories\Sequence;
+use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class ListingTypeSeeder extends Seeder
 {
     use WithoutModelEvents;
-    
+
     /**
      * Run the database seeds.
      */
