@@ -3,7 +3,7 @@ import { cva } from "class-variance-authority";
 import { Fragment, useMemo, useState } from "react";
 import { useController } from "react-hook-form";
 import classNames from "classnames";
-import { RemovableItem } from "../select/buttons/removable";
+import { RemovableItem } from "./selected/default";
 import { cn } from "@/app/_helpers/styling";
 
 export const btnStyling = cva(
