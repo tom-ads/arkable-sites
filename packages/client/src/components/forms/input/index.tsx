@@ -14,18 +14,18 @@ export interface FormInputProps
 export const inputStyling = cva(
   [
     "outline-none placeholder:text-grey-400 rounded-4xl text-grey-800 transition-all border border-grey-200 w-full",
-    "focus:border-grey-950 focus:shadow-grey-200",
+    "focus:border-grey-950 focus:!shadow-grey-200",
     "disabled:border-grey-300 disabled:bg-grey-100 disabled:text-grey-300 disabled:shadow-none",
   ],
   {
     variants: {
       size: {
-        sm: "px-4 py-[0.375rem] text-xs focus:shadow-sm",
-        md: "px-4 py-2 text-sm focus:shadow-md",
-        lg: "px-5 py-[0.625rem] text-base leading-[1.375rem] focus:shadow-lg",
+        sm: "px-4 py-[0.375rem] text-xs focus:shadow-focus-sm",
+        md: "px-4 py-2 text-sm focus:shadow-focus-md",
+        lg: "px-5 py-[0.625rem] text-base leading-[1.375rem] focus:shadow-focus-lg",
       },
       isError: {
-        true: "border-red-900 focus:shadow-red-200 focus:border-red-900",
+        true: "border-red-900 focus:!shadow-red-200/50 focus:border-red-900",
       },
     },
     defaultVariants: {

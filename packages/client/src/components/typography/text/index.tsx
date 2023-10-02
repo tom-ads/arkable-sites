@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
-const styling = cva("text-grey-950 font-medium", {
+const styling = cva("text-grey-600 font-medium", {
   variants: {
     size: {
       sm: "text-xs",
@@ -20,12 +20,7 @@ type TextProps = VariantProps<typeof styling> & {
   children: React.ReactNode;
 };
 
-export default function Text({
-  as = "p",
-  size,
-  className,
-  children,
-}: TextProps) {
+export function Text({ as = "p", size, className, children }: TextProps) {
   const TextRoot = as;
 
   return (

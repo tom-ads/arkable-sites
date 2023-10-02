@@ -16,23 +16,24 @@ export const buttonStyles = cva("outline-none font-semibold transition-all", {
       primary: [
         "bg-grey-950 text-grey-50",
         "hover:bg-grey-800",
-        "active:bg-grey-950 active:shadow-grey-200",
+        "active:bg-grey-950 active:!shadow-grey-200",
       ],
       secondary: [
         "bg-grey-800 text-grey-50",
         "hover:bg-grey-600",
-        "active:bg-grey-800 active:shadow-grey-200",
+        "active:bg-grey-800 active:!shadow-grey-200",
       ],
       outlined: [
         "border border-grey-950",
         "hover:border-grey-800 hover:text-grey-800",
-        "active:border-grey-950 active:text-grey-950 active:shadow-grey-200",
+        "active:border-grey-950 active:text-grey-950 active:!shadow-grey-200",
       ],
     },
     size: {
-      small: "text-xs py-2 px-5 active:shadow-sm rounded-2xl",
-      medium: "text-sm py-2 px-6 min-h-[36px] active:shadow-md rounded-3xl",
-      large: "text-base py-[0.625rem] px-8 active:shadow-lg rounded-3xl",
+      small: "text-xs py-2 px-5 active:shadow-focus-sm rounded-2xl",
+      medium:
+        "text-sm py-2 px-6 min-h-[36px] active:shadow-focus-md rounded-3xl",
+      large: "text-base py-[0.625rem] px-8 active:shadow-focus-lg rounded-3xl",
     },
     danger: {
       true: "text-white",
@@ -50,9 +51,9 @@ export const buttonStyles = cva("outline-none font-semibold transition-all", {
       intent: "primary",
       danger: true,
       className: [
-        "bg-red-900 shadow-red-200",
+        "bg-red-900 !shadow-red-200",
         "hover:bg-red-800",
-        "active:bg-red-900 active:shadow-red-200",
+        "active:bg-red-900 active:!shadow-red-200",
       ],
     },
     {
@@ -61,7 +62,7 @@ export const buttonStyles = cva("outline-none font-semibold transition-all", {
       className: [
         "border-red-900 text-red-900",
         "hover:border-red-800 hover:text-red-800",
-        "active:border-red-900 active:shadow-red-200 active:text-red-900",
+        "active:border-red-900 active:!shadow-red-200 active:text-red-900",
       ],
     },
     // Disabled

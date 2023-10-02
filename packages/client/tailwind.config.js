@@ -6,9 +6,14 @@ module.exports = {
   content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     boxShadow: {
-      sm: "0px 0px 0px 2px rgba(0, 0, 0, 0.2)",
-      md: "0px 0px 0px 3px rgba(0, 0, 0, 0.5)",
-      lg: "0px 0px 0px 3px rgba(0, 0, 0, 0.8)",
+      "focus-sm": "0px 0px 0px 2px rgb(0, 0, 0, 0.1)",
+      "focus-md": "0px 0px 0px 3px rgb(0, 0, 0, 0.1)",
+      "focus-lg": "0px 0px 0px 3px rgb(0, 0, 0, 0.1)",
+
+      sm: "0px 0px 4px 0px rgba(107, 114, 128, 0.3)",
+      md: "0px 0px 4px 0px rgba(107, 114, 128, 0.3)",
+      lg: "0px 0px 4px 0px rgba(107, 114, 128, 0.3)",
+
       none: defaultTheme.boxShadow.none,
     },
     borderRadius: {

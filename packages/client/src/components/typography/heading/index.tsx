@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { twMerge } from "tailwind-merge";
 
 const headingSize = {
@@ -19,7 +20,12 @@ function RootHeading({ as, size, className, children }: BaseHeadingProps) {
   const Heading = as;
 
   return (
-    <Heading className={twMerge(headingSize[size], className)}>
+    <Heading
+      className={twMerge(
+        classNames("text-grey-950", headingSize[size]),
+        className
+      )}
+    >
       {children}
     </Heading>
   );
