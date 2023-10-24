@@ -1,4 +1,3 @@
-import { FormEvent, ReactNode, useEffect } from "react";
 import {
   DefaultValues,
   FieldValues,
@@ -8,15 +7,20 @@ import {
   useForm,
 } from "react-hook-form";
 import { ZodType } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
 import { CombinedError } from "urql";
 import useURQLError from "@/hooks/use-urql-error";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormEvent, ReactNode, useEffect } from "react";
+import { isEqual } from "lodash";
 
 export type FormProps<
   TFormValues extends FieldValues,
   ValidationSchema extends ZodType = ZodType
 > = {
-  onSubmit: (fields: TFormValues, methods?: UseFormReturn<TFormValues>) => void;
+  onSubmit?: (
+    fields: TFormValues,
+    methods?: UseFormReturn<TFormValues>
+  ) => void;
   className?: string;
   validationSchema?: ValidationSchema;
   error?: CombinedError;
@@ -38,27 +42,25 @@ export function Form<
 }: FormProps<TFormValues, ValidationSchema>) {
   const methods = useForm({
     mode,
-    defaultValues: defaultValues,
+    defaultValues,
     resolver: validationSchema && zodResolver(validationSchema),
   });
 
   const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.stopPropagation();
 
+    if (!onSubmit) return;
+
     methods.handleSubmit((data: TFormValues) => onSubmit(data, methods))(event);
   };
 
-  /*
-    Sometimes we might make an async request that doesn't contain the correct defaultValues
-    during render. This useEffect will reset form state once that operation is complete.
-  */
+  useURQLError<TFormValues>(error, methods.setError, { overridePrefix: true });
+
   useEffect(() => {
-    if (defaultValues) {
+    if (!isEqual(methods.formState.defaultValues, defaultValues)) {
       methods.reset(defaultValues);
     }
   }, [defaultValues]);
-
-  useURQLError<TFormValues>(error, methods.setError, { overridePrefix: true });
 
   return (
     <FormProvider {...methods}>
