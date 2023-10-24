@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Http;
 use Symfony\Component\HttpKernel\Exception\HttpException;
 use App\Services\Fetchify\Contracts\AddressServiceContract;
+use Ramsey\Uuid\Uuid;
 
 class AddressService implements AddressServiceContract
 {
@@ -90,6 +91,7 @@ class AddressService implements AddressServiceContract
 
         $formatted = $result->map(function ($item) use ($data) {
             return [
+                'id' => Uuid::uuid4()->toString(),
                 'line_1' => $item['line_1'],
                 'line_2' => $item['line_2'],
                 'town_or_city' => $data['town'],
