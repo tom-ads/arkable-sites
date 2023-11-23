@@ -23,7 +23,7 @@ export type FormProps<
   ) => void;
   className?: string;
   validationSchema?: ValidationSchema;
-  error?: CombinedError;
+  errors?: CombinedError;
   children: (methods: UseFormReturn<TFormValues>) => ReactNode;
   defaultValues?: DefaultValues<TFormValues>;
   mode?: keyof ValidationMode;
@@ -34,7 +34,7 @@ export function Form<
   ValidationSchema extends ZodType = ZodType
 >({
   onSubmit,
-  error,
+  errors,
   validationSchema,
   defaultValues,
   mode = "all",
@@ -54,7 +54,7 @@ export function Form<
     methods.handleSubmit((data: TFormValues) => onSubmit(data, methods))(event);
   };
 
-  useURQLError<TFormValues>(error, methods.setError, { overridePrefix: true });
+  useURQLError<TFormValues>(errors, methods.setError, { overridePrefix: true });
 
   useEffect(() => {
     if (!isEqual(methods.formState.defaultValues, defaultValues)) {

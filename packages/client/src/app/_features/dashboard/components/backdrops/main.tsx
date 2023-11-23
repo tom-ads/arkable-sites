@@ -8,7 +8,7 @@ export function DashboardBackdrop() {
     <div className="max-w-[1129px] mx-auto px-8">
       <div className="flex items-center justify-between pt-8 pb-6">
         <H1>Afternoon</H1>
-        <ButtonLink href="/new-listing">New Listing</ButtonLink>
+        <ButtonLink href="/dashboard/new-listing">New Listing</ButtonLink>
       </div>
     </div>
   );

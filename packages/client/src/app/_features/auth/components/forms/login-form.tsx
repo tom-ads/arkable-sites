@@ -14,15 +14,12 @@ import { LoginInput } from "@/graphql/types";
 import { useLoginMutation } from "@/app/_features/auth/api/mutations/login.generated";
 
 const loginSchema = z.object({
-  email: z
-    .string()
-    .email({ message: "Email is required" })
-    .min(1, { message: "Email is required" }),
+  email: z.string().email({ message: "Valid email is required" }),
   password: z.string().min(1, { message: "Password is required" }),
 });
 
 export function LoginForm(): JSX.Element {
-  const router = useRouter();
+  const { push } = useRouter();
 
   const [{ error: loginError }, login] = useLoginMutation();
 
@@ -30,14 +27,14 @@ export function LoginForm(): JSX.Element {
     const response = await login({ input: formValues });
 
     if (!response?.error) {
-      router.push("/dashboard");
+      push("/dashboard");
     }
   };
 
   return (
     <Form<LoginInput, typeof loginSchema>
       mode="onSubmit"
-      error={loginError}
+      errors={loginError}
       onSubmit={handleSubmit}
       validationSchema={loginSchema}
       defaultValues={{

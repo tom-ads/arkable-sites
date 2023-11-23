@@ -1,4 +1,5 @@
 type Address {
+    id: String
     line_1: String
     line_2: String
     town_or_city: String
@@ -8,7 +9,7 @@ type Address {
 }
 
 extend type Query @guard {
-    searchPostcode(postcode: String!): [Address]
+    searchPostcode(postcode: String!): [Address!]!
         @validator(class: "Services\\AddressService\\SearchPostcodeValidator")
         @field(
             resolver: "App\\GraphQL\\Queries\\Services\\AddressService\\SearchPostcode"

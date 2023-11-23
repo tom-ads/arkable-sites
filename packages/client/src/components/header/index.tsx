@@ -1,14 +1,14 @@
 import Link from "next/link";
-import Text from "../typography/text";
+import { Text } from "../typography/text";
 import { ArkoraIcon } from "../icons/arkora";
 
 export function Header() {
   return (
-    <header className="border-b border-grey-200">
+    <header className="fixed inset-x-0 top-0 bg-white border-b border-grey-200">
       <div className="px-8 mx-auto max-w-[1440px]">
         <div className="flex items-center justify-between py-5 gap-x-4">
           {/* Logo */}
-          <Link href="/">
+          <Link href="/" className="outline-none">
             <div className="flex items-center gap-x-2">
               <ArkoraIcon className="w-9" />
               <Text>Arkora</Text>

@@ -16,6 +16,17 @@ export type Scalars = {
   DateTime: { input: any; output: any; }
 };
 
+export type Address = {
+  __typename?: 'Address';
+  country?: Maybe<Scalars['String']['output']>;
+  county?: Maybe<Scalars['String']['output']>;
+  id?: Maybe<Scalars['String']['output']>;
+  line_1?: Maybe<Scalars['String']['output']>;
+  line_2?: Maybe<Scalars['String']['output']>;
+  postcode?: Maybe<Scalars['String']['output']>;
+  town_or_city?: Maybe<Scalars['String']['output']>;
+};
+
 export type Listing = {
   __typename?: 'Listing';
   description?: Maybe<Scalars['String']['output']>;
@@ -48,12 +59,18 @@ export type Query = {
   __typename?: 'Query';
   listing?: Maybe<Listing>;
   root?: Maybe<Scalars['String']['output']>;
+  searchPostcode: Array<Address>;
   session?: Maybe<Session>;
 };
 
 
 export type QueryListingArgs = {
   id: Scalars['ID']['input'];
+};
+
+
+export type QuerySearchPostcodeArgs = {
+  postcode: Scalars['String']['input'];
 };
 
 export type Session = {

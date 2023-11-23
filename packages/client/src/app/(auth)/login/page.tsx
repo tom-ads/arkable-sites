@@ -1,7 +1,7 @@
+import { Metadata } from "next";
 import { ArkoraIcon } from "@/components/icons";
 import { H1 } from "@/components/typography/heading";
 import { LoginForm } from "@/app/_features/auth/components/forms/login-form";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Login",

@@ -1,7 +1,7 @@
 import { VariantProps, cva } from "class-variance-authority";
 import { twMerge } from "tailwind-merge";
 
-const styling = cva("text-grey-600 font-medium", {
+const styling = cva("text-grey-500 font-medium", {
   variants: {
     size: {
       sm: "text-xs",

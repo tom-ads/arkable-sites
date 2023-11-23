@@ -24,5 +24,9 @@ export function FormErrorMessage({
   size,
   children,
 }: FormErrorMessageProps) {
+  if (!children) {
+    return;
+  }
+
   return <p className={twMerge(styling({ size }), className)}>{children}</p>;
 }

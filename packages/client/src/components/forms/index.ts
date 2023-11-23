@@ -3,7 +3,9 @@ import { FormControl } from "./control";
 import { FormInput } from "./input";
 import { FormErrorMessage } from "./error-message";
 import { FormPasswordInput } from "./password-input";
-import { FormSelect } from "./select";
+import { FormMultiSelect } from "./multi-select";
+import { FormComboBox } from "./combo-box";
+import { FormAddress } from "./address";
 
 export {
   Form,
@@ -11,5 +13,7 @@ export {
   FormPasswordInput,
   FormControl,
   FormErrorMessage,
-  FormSelect,
+  FormMultiSelect,
+  FormComboBox,
+  FormAddress,
 };

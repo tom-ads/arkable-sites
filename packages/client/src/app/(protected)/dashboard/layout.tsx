@@ -1,13 +1,11 @@
-import { Header } from "@/components/header";
 import { PropsWithChildren } from "react";
+import { Header } from "@/components/header";
 
-type DashboardParops = PropsWithChildren;
-
-export default function DashboardLayout({ children }: DashboardParops) {
+export default function DashboardLayout({ children }: PropsWithChildren) {
   return (
     <>
       <Header />
-      <main className="w-full">{children}</main>
+      <main className="w-full mt-[60px]">{children}</main>
     </>
   );
 }
